@@ -5,5 +5,5 @@ Recreating the classic game to experiment with Java, staying true to its simple 
 ###
 
 <div align="center">
-  <img src="https://github.com/Guimats7/Pong-e/README/pongif.gif" alt="Pong" />
+  <img src="https://github.com/Guimats7/Pong-e/blob/main/README/pongif.gif" alt="Pong" />
 </div>
