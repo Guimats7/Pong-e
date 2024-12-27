@@ -8,6 +8,7 @@ public class Janela extends JFrame implements Runnable {
 
     Graphics2D g2;
     KL keyListener = new KL();
+    Retangulo playerOne, ai, ball;
 
     public Janela() {
         this.setSize( Constantes.LARGURA_TELA, Constantes.ALTURA_TELA);
@@ -17,20 +18,19 @@ public class Janela extends JFrame implements Runnable {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.addKeyListener(keyListener);
         g2 = (Graphics2D)this.getGraphics();
+
+        playerOne = new Retangulo(100, Constantes.ALTURA_TELA / 2, Constantes.LARGURA_P1, Constantes.ALTURA_P1, Constantes.CONST_COR);
+        ai = new Retangulo(Constantes.LARGURA_TELA - 100 - Constantes.LARGURA_AI, Constantes.ALTURA_TELA / 2, Constantes.LARGURA_AI, Constantes.ALTURA_AI, Constantes.CONST_COR);
+        ball = new Retangulo(Constantes.LARGURA_TELA / 2, Constantes.ALTURA_TELA / 2, Constantes.LARGURA_BALL, Constantes.ALTURA_BALL, Constantes.CONST_COR);
     }
 
     public void update(double dt) {
         g2.setColor(Color.BLACK);
         g2.fillRect(0, 0, Constantes.LARGURA_TELA, Constantes.ALTURA_TELA);
-        if ((keyListener.isKeyPressed(KeyEvent.VK_UP))||((keyListener.isKeyPressed(KeyEvent.VK_W)))){
-            System.out.println("user is pressing up");
-        } else if ((keyListener.isKeyPressed(KeyEvent.VK_DOWN))||((keyListener.isKeyPressed(KeyEvent.VK_S)))) {
-            System.out.println("user is pressing down");
-        } else if ((keyListener.isKeyPressed(KeyEvent.VK_RIGHT))||((keyListener.isKeyPressed(KeyEvent.VK_D)))) {
-            System.out.println("user is pressing right");
-        } else if ((keyListener.isKeyPressed(KeyEvent.VK_LEFT))||((keyListener.isKeyPressed(KeyEvent.VK_A)))) {
-            System.out.println("user is pressing left");
-        }
+
+        playerOne.desenhar(g2);
+        ai.desenhar(g2);
+        ball.desenhar(g2);
     }
 
     public void run() {
